@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+#table2{
+margin: 100px;
+}
+</style></head>
+<body>
+<table>
+<tr>
+<td>Исходный текст:</td>
+<td>Ключ для Цезаря:</td>
+<td>Ключ для Виженера:</td>
+<td>Ключ для Гронсфельда:</td>
+<td>Зашифрованный/Дешифрованный текст:</td>
+</tr>
+<tr>
+<td><input type="text" id="vvod" ></td>
+<td><input type="text" id="key_1"></td>
+<td><input type="text" id="key_2"></td>
+<td><input type="text" id="key_3"></td>
+<td><input type="text" disabled="true" id="itog"></td>
+<td><input type="button" onclick="first()" value="Шифровка" ></td>
+<td><input type="button" onclick="two()" value="Дешифровка"></td>
+</tr>
+</table>
+<table id="table2">
+<tr>
+<td colspan="9">Инструкция по использованию:</td>
+</tr>
+<tr>
+<td>I.Шифровка:</td>
+</tr>
+<tr>
+<td>1)В поле "Исходный текст" вы вводите текст который хотите зашифровать.</td>
+</tr>
+<tr>
+<td>2)В поле "Ключ для Цезаря" вы вводите ключ для Цезаря.</td>
+</tr>
+<tr>
+<td>3)В поле "Ключ для Виженера" вы вводите ключ для Виженера.</td>
+</tr>
+<tr>
+<td>4)В поле "Ключ для Гронсфельда" вы вводите ключ для Гронсфельда.</td>
+</tr>
+<tr>
+<td>5)В поле "Зашифрованный текст" выводится зашифрованный текст.</td>
+</tr>
+<tr>
+<td>II.Дешифровка:</td>
+</tr>
+<tr>
+<td>1)В поле "Исходный текст" вы вводите текст который хотите дешифровать.</td>
+</tr>
+<tr>
+<td>2)В поле "Ключ для Цезаря" вы вводите ключ для Цезаря.</td>
+</tr>
+<tr>
+<td>3)В поле "Ключ для Виженера" вы вводите ключ для Виженера.</td>
+</tr>
+<tr>
+<td>4)В поле "Ключ для Гронсфельда" вы вводите ключ для Гронсфельда.</td>
+</tr>
+<tr>
+<td>5)В поле "Зашифрованный текст" выводится дешифрованный текст.</td>
+</tr>
+</table>
+
+<script type="text/javascript">
+
+function zezar(){
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р',
+'с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var strokaforshifr ;
+var shifrstroka=[];
+strokaforshifr=document.getElementById('vvod').value;
+var x;
+var n=document.getElementById('key_1').value;
+strokaforshifr=strokaforshifr.split('');
+
+for (var i = 0; i < strokaforshifr.length; i++) {
+x=alphabet.indexOf(strokaforshifr[i])+n*1;
+if (x==81) {x=0;
+
+}
+
+
+while(x>alphabet.length){
+x=x-alphabet.length;
+}
+
+
+
+shifrstroka.push(alphabet[x]);
+var strokainend
+}
+strokainend=shifrstroka.join('');
+
+return strokainend;
+}
+function vizener(){
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л' ,'м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var lol=zezar();
+var shs_1=[];
+var c;
+var x;
+var s;
+lol=lol.split('');
+var n=document.getElementById('key_2').value;
+n=n.split('');
+var key=[];
+key.join(n);
+
+for(var i=key.length;i<lol.length;i++){
+n.push(n[i+key.length]);
+}
+for(var i=0;i<lol.length;i++){
+c=alphabet.indexOf(n[i]);
+x=alphabet.indexOf(lol[i]);
+s=x+(c+1);
+console.log(c);
+console.log(x);
+console.log(s);
+
+while(s>alphabet.length-1){
+s=s-alphabet.length;
+
+}
+
+shs_1.push(alphabet[s]);
+var strokainend
+}
+
+strokainend=shs_1.join('');
+return strokainend;
+
+}
+function first(){
+
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л'
+ 
+,'м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var kluch=['0','1','2','3','4','5','6','7','8','9'];
+var lol_1=vizener();
+var shs=[];
+var c;
+var x;
+var s;
+lol_1=lol_1.split('');
+var n=document.getElementById('key_3').value;
+n=n.split('');
+var key=[];
+key.join(n);
+
+for(var i=key.length;i<lol_1.length;i++){
+n.push(n[i+key.length]);
+}
+for(var i=0;i<lol_1.length;i++){
+c=kluch.indexOf(n[i]);
+x=alphabet.indexOf(lol_1[i]);
+s=x+c;
+console.log(c);
+console.log(x);
+console.log(s);
+while(s>alphabet.length-1){
+s=s-alphabet.length;
+
+}
+
+shs.push(alphabet[s]);
+}
+document.getElementById('itog').value=shs.join('');
+}
+function zezar_2(){
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л','м','н','о','п','р',
+'с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var strokainend
+var shifrstroka=[];
+var strokaforshifr=document.getElementById('vvod').value;
+var x;
+var y;
+var n=document.getElementById('key_1').value;
+strokaforshifr=strokaforshifr.split('');
+for (var i = 0; i < strokaforshifr.length; i++) {
+
+x=alphabet.indexOf(strokaforshifr[i])-n*1;console.log(x);
+while(x<0){
+x=x+alphabet.length;
+}console.log(x);
+
+shifrstroka.push(alphabet[x]);
+
+}
+
+strokainend=shifrstroka.join('');
+return strokainend;
+}
+function vizener_2(){
+
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л' ,'м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var lol_2=zezar_2();
+var shs=[];
+var c;
+var x;
+var s;
+lol_2=lol_2.split('');
+var n=document.getElementById('key_2').value;
+n=n.split('');
+var key=[];
+key.join(n);
+
+for( var i=key.length;i<lol_2.length;i++){
+n.push(n[i+key.length]);
+}
+for( var i=0;i<lol_2.length;i++){
+c=alphabet.indexOf(n[i]);
+x=alphabet.indexOf(lol_2[i]);
+s=x-(c+1);
+console.log(c);
+console.log(x);
+console.log(s);
+
+while(s<0){
+s=s+alphabet.length;
+}
+
+shs.push(alphabet[s]);
+
+}
+
+
+return shs;
+}
+function two(){
+
+var alphabet=['А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я','а','б','в','г','д','е','ё','ж','з','и','й','к','л' ,'м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ъ','ы','ь','э','ю','я','0','1','2','3','4','5','6','7','8','9',' ','.',',',';',':'];
+var keyr=['0','1','2','3','4','5','6','7','8','9'];
+var lol_0=vizener_2();
+var shs=[];
+var c;
+var x;
+var s;
+
+var n=document.getElementById('key_3').value;
+n=n.split('');
+var key=[];
+key.join(n);
+
+for( var i=key.length;i<lol_0.length;i++){
+n.push(n[i+key.length]);
+}
+for( var i=0;i<lol_0.length;i++){
+c=keyr.indexOf(n[i]);
+x=alphabet.indexOf(lol_0[i]);
+s=x-c;
+console.log(c);
+console.log(x);
+console.log(s);
+
+while(s<0){
+s=s+alphabet.length;
+}
+
+shs.push(alphabet[s]);
+
+}
+
+document.getElementById('itog').value=shs.join('');
+
+}
+</script>
+</body>
+</html>
